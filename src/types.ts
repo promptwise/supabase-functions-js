@@ -51,6 +51,10 @@ export type FunctionInvokeOptions = {
    */
   method?: "POST"| "GET"| "PUT" | "PATCH" | "DELETE"
   /**
+   * Abort signal
+   */
+  signal?: AbortSignal
+  /**
    * The body of the request.
    */
   body?:
