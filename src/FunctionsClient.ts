@@ -46,7 +46,7 @@ export class FunctionsClient {
     options: FunctionInvokeOptions = {}
   ): Promise<FunctionsResponse<T>> {
     try {
-      const { headers, method, body: functionArgs } = options
+      const { headers, method, signal, body: functionArgs } = options
 
       let _headers: Record<string, string> = {}
       let body: any
@@ -85,6 +85,7 @@ export class FunctionsClient {
         // 3. default Content-Type header
         headers: { ..._headers, ...this.headers, ...headers },
         body,
+        signal,
       }).catch((fetchError) => {
         throw new FunctionsFetchError(fetchError)
       })
